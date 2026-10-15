@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple, accessible tip calculator that splits restaurant bills in Indian Rupees."
+    />
+    <title>Tip Calculator | Split the Bill in ₹</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-header">
+        <p class="eyebrow">Restaurant helper</p>
+        <h1>Tip Calculator</h1>
+        <p class="subtitle">
+          Enter the bill, choose a tip, and split the total fairly.
+        </p>
+      </header>
+
+      <main class="card" id="calculator">
+        <form id="tip-form" novalidate>
+          <div class="layout">
+            <section class="inputs" aria-labelledby="inputs-heading">
+              <h2 id="inputs-heading" class="sr-only">Bill inputs</h2>
+
+              <div class="field">
+                <label for="bill-amount">Bill amount</label>
+                <div class="input-wrap">
+                  <span class="prefix" aria-hidden="true">₹</span>
+                  <input
+                    id="bill-amount"
+                    name="bill"
+                    type="number"
+                    inputmode="decimal"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                    autocomplete="off"
+                    aria-describedby="bill-error"
+                  />
+                </div>
+                <p id="bill-error" class="error" role="alert"></p>
+              </div>
+
+              <fieldset class="field tip-fieldset">
+                <legend>Select tip %</legend>
+                <div class="tip-grid" role="group" aria-label="Preset tip percentages">
+                  <button type="button" class="tip-btn" data-tip="5">5%</button>
+                  <button type="button" class="tip-btn" data-tip="10">10%</button>
+                  <button type="button" class="tip-btn is-active" data-tip="15" aria-pressed="true">
+                    15%
+                  </button>
+                  <button type="button" class="tip-btn" data-tip="18">18%</button>
+                  <button type="button" class="tip-btn" data-tip="20">20%</button>
+                  <button type="button" class="tip-btn tip-btn-custom" data-tip="custom">
+                    Custom
+                  </button>
+                </div>
+
+                <div class="field custom-tip-field" id="custom-tip-field" hidden>
+                  <label for="custom-tip">Custom tip percentage</label>
+                  <div class="input-wrap">
+                    <input
+                      id="custom-tip"
+                      name="customTip"
+                      type="number"
+                      inputmode="decimal"
+                      min="0"
+                      max="100"
+                      step="0.1"
+                      placeholder="e.g. 12.5"
+                      autocomplete="off"
+                      aria-describedby="tip-error"
+                    />
+                    <span class="suffix" aria-hidden="true">%</span>
+                  </div>
+                </div>
+                <p id="tip-error" class="error" role="alert"></p>
+              </fieldset>
+
+              <div class="field">
+                <label for="people-count">Number of people</label>
+                <input
+                  id="people-count"
+                  name="people"
+                  type="number"
+                  inputmode="numeric"
+                  min="1"
+                  step="1"
+                  value="1"
+                  autocomplete="off"
+                  aria-describedby="people-error"
+                />
+                <p id="people-error" class="error" role="alert"></p>
+              </div>
+
+              <button type="reset" class="reset-btn" id="reset-btn">
+                Reset
+              </button>
+            </section>
+
+            <section class="results" aria-labelledby="results-heading">
+              <h2 id="results-heading">Breakdown</h2>
+              <p class="results-hint">Updates as you type</p>
+
+              <dl class="result-list">
+                <div class="result-item result-tip">
+                  <dt>Tip amount</dt>
+                  <dd id="tip-amount">₹0.00</dd>
+                </div>
+                <div class="result-item result-total">
+                  <dt>Total bill</dt>
+                  <dd id="total-bill">₹0.00</dd>
+                </div>
+                <div class="result-item result-person">
+                  <dt>Amount per person</dt>
+                  <dd id="per-person">₹0.00</dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+        </form>
+      </main>
+
+      <footer class="page-footer">
+        <p>Built with HTML, CSS, and vanilla JavaScript for MLH Hacktoberfest.</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
